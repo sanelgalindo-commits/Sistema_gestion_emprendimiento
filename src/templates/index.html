@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DolceVida | Catálogo de Postres</title>
+    <!-- Tipografía moderna Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Vinculación del archivo CSS estático -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">🍰 Dolce<span>Vida</span></h1>
+            <a href="{{ url_for('admin') }}" class="btn-admin">Panel de Administración</a>
+        </div>
+    </nav>
+    
+    <!-- Sección Principal (Hero) -->
+    <header class="hero">
+        <div class="hero-content">
+            <h2>Postres Artesanales, Directo a tu Puerta</h2>
+            <p>Descubre nuestra colección de pastelería fina. Elaborados con ingredientes orgánicos, recetas clásicas y mucho amor.</p>
+        </div>
+    </header>
+
+    <!-- Catálogo de Productos -->
+    <main class="catalog-container">
+        <div class="product-grid">
+            <!-- Ciclo for de Jinja2 para renderizar productos dinámicamente -->
+            {% for producto in productos %}
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="{{ producto.imagen }}" alt="{{ producto.nombre }}">
+                    
+                    <!-- Lógica de Badges para el Stock (Regla de Negocio implementada) -->
+                    {% if producto.stock == 0 %}
+                        <span class="badge badge-danger">Agotado</span>
+                    {% elif producto.stock <= 3 %}
+                        <span class="badge badge-warning">¡Últimos {{ producto.stock }}!</span>
+                    {% else %}
+                        <span class="badge badge-success">En Stock</span>
+                    {% endif %}
+                </div>
+                
+                <div class="product-info">
+                    <h3>{{ producto.nombre }}</h3>
+                    <p class="desc">{{ producto.descripcion }}</p>
+                    
+                    <div class="price-action">
+                        <span class="price">${{ "%.2f"|format(producto.precio) }}</span>
+                        <!-- Botón inhabilitado si no hay stock -->
+                        {% if producto.stock > 0 %}
+                            <button class="btn-buy">Comprar</button>
+                        {% else %}
+                            <button class="btn-buy disabled" disabled>Sin Stock</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 - DolceVida Pastelería | Proyecto Sistema de Gestión</p>
+    </footer>
+</body>
+</html>

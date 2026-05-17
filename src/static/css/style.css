@@ -1,0 +1,416 @@
+/* Variables y Diseño Premium (Design Tokens) */
+:root {
+    --primary-color: #ff6b6b;
+    --primary-hover: #ff5252;
+    --dark-bg: #2d3436;
+    --text-dark: #2d3436;
+    --text-light: #636e72;
+    --bg-light: #f4f6f8;
+    --white: #ffffff;
+    --radius: 16px;
+    --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--white);
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--dark-bg);
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.btn-admin {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.btn-admin:hover {
+    background-color: #1e272e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    text-align: center;
+    padding: 5rem 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin: 0 0 1rem 0;
+    color: var(--dark-bg);
+    letter-spacing: -0.5px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Catalog Grid */
+.catalog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem 2rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Product Card */
+.product-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.img-container {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.06);
+}
+
+/* Badges (Indicadores de Stock) */
+.badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.badge-success { background-color: #20bf6b; color: white;}
+.badge-warning { background-color: #f7b731; color: #2d3436; }
+.badge-danger { background-color: #eb3b5a; color: white;}
+
+/* Product Info */
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-bg);
+}
+
+.product-info .desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.price-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f2f6;
+    padding-top: 1.2rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.btn-buy {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-buy:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255,107,107,0.3);
+}
+
+.btn-buy.disabled {
+    background-color: #dfe6e9;
+    color: #b2bec3;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--dark-bg);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================
+   ESTILOS DEL PANEL DE ADMINISTRACIÓN
+   ========================================= */
+
+.admin-body {
+    background-color: #f0f2f5;
+}
+
+.admin-navbar {
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--dark-bg);
+    color: var(--dark-bg);
+}
+
+.btn-outline:hover {
+    background: var(--dark-bg);
+    color: var(--white);
+}
+
+.admin-container {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.admin-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.admin-card h2 {
+    margin-top: 0;
+    color: var(--dark-bg);
+    border-bottom: 2px solid #f1f2f6;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+/* Formulario Admin */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #4b6584;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #d1d8e0;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    transition: var(--transition);
+    background-color: #fcfcfc;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255,107,107,0.15);
+    background-color: var(--white);
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--dark-bg);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.btn-submit:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(255,107,107,0.3);
+}
+
+/* Tabla de Inventario */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #f8f9fa;
+    padding: 1.2rem 1rem;
+    color: #4b6584;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e1e5ea;
+}
+
+.inventory-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid #f1f2f6;
+    vertical-align: middle;
+}
+
+.inventory-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.inventory-table tbody tr:hover {
+    background-color: #fdfdfd;
+}
+
+.product-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-bg);
+}
+
+.thumb-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stock-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.stock-badge.ok { background: #e3fbed; color: #20bf6b; }
+.stock-badge.low { background: #fff4de; color: #f39c12; }
+.stock-badge.empty { background: #ffeaea; color: #eb3b5a; }
+
+.status-active { color: #20bf6b; font-weight: 700; font-size: 0.9rem;}
+.status-inactive { color: #eb3b5a; font-weight: 700; font-size: 0.9rem;}

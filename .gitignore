@@ -1,0 +1,13 @@
+# Python Virtual Environment
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuraciones locales
+.env
